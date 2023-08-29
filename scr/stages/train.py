@@ -7,6 +7,7 @@ import pickle
 # you need to be in scr directory
 
 params = yaml.safe_load(open("params.yaml"))["train"]
+neibor = yaml.safe_load(open("params.yaml"))["estimator"]['n_neighbors']
 
 train = pd.read_csv(params['dataset_csv'])
 
@@ -21,7 +22,7 @@ smt = SMOTE()
 X_train, y_train = smt.fit_resample(X_train, y_train)
 
 # using clasifier
-knn = KNeighborsClassifier(n_neighbors=3)
+knn = KNeighborsClassifier(n_neighbors=neibor)
 knn.fit(X_train, y_train)
 
 with open('model/train.pkl', "wb") as fd:

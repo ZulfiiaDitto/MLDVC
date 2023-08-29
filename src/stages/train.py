@@ -8,11 +8,11 @@ import argparse
 # you need to be in scr directory
 
 def train():
-    with open("params.yaml", "r") as config:
+    with open("./params.yaml", "r") as config:
         params = yaml.safe_load(config)["train"]
         neibor = yaml.safe_load(config)["estimator"]['n_neighbors']
 
-
+    print(params['dataset_csv'])
     train = pd.read_csv(params['dataset_csv'])
 
     numerical = [i for i in train.select_dtypes(include=['int64', 'float64']).columns if i not in ['Outcome Type']]

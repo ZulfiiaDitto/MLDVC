@@ -4,7 +4,8 @@ stages:
     deps:
     - src/stages/train.py
     params:
-    - random_seed, n_neighbors
+    - random_seed
+    - n_neighbors
     outs:
     - src/model/train.pkl
 

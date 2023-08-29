@@ -2,18 +2,18 @@ n_neighbors: 3
 random_seed: 42
 
 data_load:
-  dataset_csv: 'data/data_shelter.csv'
+  dataset_csv: './data/data_shelter.csv'
 
 data_split:
   test_size: 0.2
 
 train:
   # training parameters, hyperparameters
-  dataset_csv : 'data/splits/train.csv'
+  dataset_csv : './data/splits/train.csv'
 
 test: 
-  dataset_csv: 'data/splits/test.csv'
-  model: 'model/train.pkl'
+  dataset_csv: './data/splits/test.csv'
+  model: './model/train.pkl'
 
 
 reports:

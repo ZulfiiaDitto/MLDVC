@@ -10,7 +10,10 @@ data_split:
 train:
   # training parameters, hyperparameters
   dataset_csv : 'data/splits/train.csv'
-  
+
+test: 
+  dataset_csv: 'data/splits/test.csv'
+  model: 'model/train.pkl'
 
 
 reports:

@@ -2,8 +2,10 @@ import pandas as pd
 import yaml
 
 # you need to be in scr directory
+# this script not need to be run -> since all data had been loaded already
 
-params = yaml.safe_load(open("params.yaml"))["data_load"]
+with open("params.yaml", "r") as config:
+  params = yaml.safe_load(config)["data_load"]
 
 def get_data():
   """function pulls data from url, modify if needed. 

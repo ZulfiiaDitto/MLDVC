@@ -6,8 +6,10 @@ import yaml
 import pickle 
 # you need to be in scr directory
 
-params = yaml.safe_load(open("params.yaml"))["train"]
-neibor = yaml.safe_load(open("params.yaml"))["estimator"]['n_neighbors']
+with open("params.yaml", "r") as config:
+    params = yaml.safe_load(config)["train"]
+    neibor = yaml.safe_load(config)["estimator"]['n_neighbors']
+
 
 train = pd.read_csv(params['dataset_csv'])
 

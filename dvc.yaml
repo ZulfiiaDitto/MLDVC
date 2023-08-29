@@ -4,7 +4,7 @@ stages:
     deps:
     - src/stages/train.py
     params:
-    - base.random_seed, estimator.n_neighbors
+    - random_seed, n_neighbors
     outs:
     - src/model/train.pkl
 
@@ -13,6 +13,6 @@ stages:
     deps:
     - src/stages/evaluate.py
     params:
-    - base.random_seed 
+    - random_seed 
     outs:
     - src/evaluation_artefacts/test.pkl

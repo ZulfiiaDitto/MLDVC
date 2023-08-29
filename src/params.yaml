@@ -1,14 +1,11 @@
-base: 
-  random_seed: 42
+n_neighbors: 3
+random_seed: 42
 
 data_load:
   dataset_csv: 'data/data_shelter.csv'
 
 data_split:
   test_size: 0.2
-
-estimator:
-  n_neighbors: 3
 
 train:
   # training parameters, hyperparameters

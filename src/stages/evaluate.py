@@ -23,10 +23,10 @@ def evaluate():
         loaded_model = pickle.load(models_params)
 
     test_predictions = loaded_model.predict(X_test)
-    # with open('evaluation_artefacts/test.pkl', 'wb') as fd:
-    #     pickle.dump(confusion_matrix(y_test, test_predictions))
-    #     pickle.dump(classification_report(y_test, test_predictions))
-    #     pickle.dump(accuracy_score(y_test, test_predictions))
+    with open('evaluation_artefacts/test.pkl', 'wb') as fd:
+        pickle.dump(confusion_matrix(y_test, test_predictions))
+        pickle.dump(classification_report(y_test, test_predictions))
+        pickle.dump(accuracy_score(y_test, test_predictions))
 
 
     print('Model performance on the test set:')

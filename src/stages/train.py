@@ -4,6 +4,7 @@ from imblearn.over_sampling import SMOTE
 import pandas as pd
 import yaml
 import pickle 
+import argparse
 # you need to be in scr directory
 
 def train():
@@ -32,4 +33,6 @@ def train():
         pickle.dump(knn, fd)
 
 if __name__ == '__main__':
+    # args_parser = argparse.ArgumentParse()
+    # args_parser.add_argument('--config', )
     train()

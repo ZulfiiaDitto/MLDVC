@@ -1,0 +1,18 @@
+stages:
+  train:
+    cmd: train.dataset_csv
+    deps:
+    - src/stages/train.py
+    params:
+    - base.random_seed, estimator.n_neighbors
+    outs:
+    - src/model/train.pkl
+
+  evaluate:
+    cmd: test.dataset_csv
+    deps:
+    - src/stages/evaluate.py
+    params:
+    - base.random_seed 
+    outs:
+    - src/evaluation_artefacts/test.pkl

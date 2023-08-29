@@ -1,5 +1,0 @@
-base: 
-  seed: 42
-
-data_load:
-  dataset_csv: 

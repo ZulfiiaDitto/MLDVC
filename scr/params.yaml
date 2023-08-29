@@ -1,0 +1,17 @@
+base: 
+  random_seed: 42
+
+data_load:
+  dataset_csv: 'data/data_shelter.csv'
+
+data_split:
+  test_size: 0.2
+
+train:
+  # training parameters, hyperparameters
+  dataset_csv : 'data/splits/train.csv'
+  
+
+
+reports:
+  # where we saving metrics, images

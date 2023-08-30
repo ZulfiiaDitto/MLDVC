@@ -1,19 +1,21 @@
 stages:
   train:
-    cmd: train.dataset_csv
+    cmd: python src/stages/train.py
     deps:
     - src/stages/train.py
+    - 'src/data/splits/train.csv'
     params:
-    - random_seed
-    - n_neighbors
+    - train.random_seed
+    - train.n_neighbors
     outs:
     - src/model/train.pkl
 
   evaluate:
-    cmd: test.dataset_csv
+    cmd: python src/stages/evaluate.py
     deps:
     - src/stages/evaluate.py
+    - 'src/data/splits/test.csv'
     params:
-    - random_seed 
+    - test.random_seed 
     outs:
-    - src/evaluation_artefacts/test.pkl
+    - src/evaluation_artefacts/test.json

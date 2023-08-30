@@ -2,14 +2,14 @@ from sklearn.metrics import confusion_matrix, classification_report, accuracy_sc
 import pandas as pd
 import yaml
 import pickle 
+import json
 from sklearn.neighbors import KNeighborsClassifier
 
 
 def evaluate():
     with open("params.yaml", "r") as config:
         params = yaml.safe_load(config)["test"]
-        neibor = yaml.safe_load(config)["estimator"]['n_neighbors']
-        model = yaml.safe_load(config)["test"]['model']
+        model = params['model']
 
 
     test = pd.read_csv(params['dataset_csv'])
@@ -23,10 +23,9 @@ def evaluate():
         loaded_model = pickle.load(models_params)
 
     test_predictions = loaded_model.predict(X_test)
-    with open('evaluation_artefacts/test.pkl', 'wb') as fd:
-        pickle.dump(confusion_matrix(y_test, test_predictions))
-        pickle.dump(classification_report(y_test, test_predictions))
-        pickle.dump(accuracy_score(y_test, test_predictions))
+    with open('src/evaluation_artefacts/test.json', 'w') as fd:
+        json.dump({'accuracy' : accuracy_score(y_test, test_predictions)}, fd)
+        
 
 
     print('Model performance on the test set:')

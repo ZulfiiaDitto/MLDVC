@@ -1,19 +1,23 @@
-n_neighbors: 3
-random_seed: 42
+base:
+  n_neighbors: 3
+  random_seed: 42
 
 data_load:
-  dataset_csv: './data/data_shelter.csv'
+  dataset_csv: 'src/data/data_shelter.csv'
 
 data_split:
   test_size: 0.2
 
 train:
   # training parameters, hyperparameters
-  dataset_csv : './data/splits/train.csv'
+  dataset_csv : 'src/data/splits/train.csv'
+  n_neighbors: 3
+  random_seed: 42
 
 test: 
-  dataset_csv: './data/splits/test.csv'
-  model: './model/train.pkl'
+  dataset_csv: 'src/data/splits/test.csv'
+  model: 'src/model/train.pkl'
+  random_seed: 42
 
 
 reports:

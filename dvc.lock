@@ -1,0 +1,41 @@
+schema: '2.0'
+stages:
+  train:
+    cmd: python src/stages/train.py
+    deps:
+    - path: src/data/splits/train.csv
+      hash: md5
+      md5: 2dc6e17527bd4e8d89b194709874b19c
+      size: 6328920
+    - path: src/stages/train.py
+      hash: md5
+      md5: e884b5d8e9233a6cff22dcde78007e5d
+      size: 1032
+    params:
+      params.yaml:
+        train.n_neighbors: 3
+        train.random_seed: 42
+    outs:
+    - path: src/model/train.pkl
+      hash: md5
+      md5: 48e11c6e6f9a7f91910ddbf0d05718dc
+      size: 18857973
+  evaluate:
+    cmd: python src/stages/evaluate.py
+    deps:
+    - path: src/data/splits/test.csv
+      hash: md5
+      md5: 1d20bac5bb20ff2a7081f7d772406771
+      size: 1584389
+    - path: src/stages/evaluate.py
+      hash: md5
+      md5: 9fe0089176e057b0866c7edea1c23aa2
+      size: 1151
+    params:
+      params.yaml:
+        test.random_seed: 42
+    outs:
+    - path: src/evaluation_artefacts/test.json
+      hash: md5
+      md5: cdfaab5c1357d2988174848247cba1f4
+      size: 32

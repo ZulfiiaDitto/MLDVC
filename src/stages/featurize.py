@@ -7,8 +7,7 @@ def featurize():
     filename= yaml.safe_load(open("params.yaml"))["feature"]['dataset_csv']
     test_size = yaml.safe_load(open("params.yaml"))["feature"]['test_size']
     final = pd.read_csv(filename)
-    #import label encoder
-    
+    #encoding the columns
     label_encoder = preprocessing.LabelEncoder()
     final['Sex upon Intake'] = label_encoder.fit_transform(final['Sex upon Intake'])
     final['Sex upon Outcome'] = label_encoder.fit_transform(final['Sex upon Outcome'])

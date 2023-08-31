@@ -5,6 +5,7 @@ import pandas as pd
 import yaml
 import pickle 
 import argparse
+from sklearn.ensemble import GradientBoostingClassifier
 # you need to be in dvc ml project directory
 
 def train():
@@ -23,7 +24,9 @@ def train():
     X_train, y_train = smt.fit_resample(X_train, y_train)
 
     # using clasifier
-    knn = KNeighborsClassifier(n_neighbors=params['n_neighbors'])
+   # knn = KNeighborsClassifier(n_neighbors=params['n_neighbors'])
+    knn = GradientBoostingClassifier(n_estimators=100, learning_rate=1.0,
+                                     max_depth=1, random_state=params['random_seed'])
     knn.fit(X_train, y_train)
 
     with open('src/model/train.pkl', "wb") as fd:

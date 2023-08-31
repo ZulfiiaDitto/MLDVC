@@ -5,28 +5,32 @@ stages:
     deps:
     - path: src/data/splits/train.csv
       hash: md5
-      md5: d22f8a20ddfbfb772321c2aa6a7881c2
-      size: 6329818
+      md5: eec6cb9419dff536276f50f23802dba7
+      size: 6332536
     - path: src/stages/train.py
       hash: md5
-      md5: defe444ff86ef50f86a57a55898029a2
-      size: 930
+      md5: 7cfee3283fd9c1da4b8a67e85c00d5a9
+      size: 1147
     params:
       params.yaml:
-        train.n_neighbors: 3
+        train.n_neighbors: 2
         train.random_seed: 42
     outs:
     - path: src/model/train.pkl
       hash: md5
-      md5: 83eb21fb6b03c266db6cf08983eba65c
-      size: 18847989
+      md5: c52dda1ebaa5e1fc681fd11743106599
+      size: 46865
   evaluate:
     cmd: python src/stages/evaluate.py
     deps:
     - path: src/data/splits/test.csv
       hash: md5
-      md5: afb0e7dad0d2b091b110329f01e9ebd4
-      size: 1583491
+      md5: 41f402f6b290aacbe9ef8188a289aac7
+      size: 1580773
+    - path: src/model/train.pkl
+      hash: md5
+      md5: c52dda1ebaa5e1fc681fd11743106599
+      size: 46865
     - path: src/stages/evaluate.py
       hash: md5
       md5: 9fe0089176e057b0866c7edea1c23aa2
@@ -37,7 +41,7 @@ stages:
     outs:
     - path: src/evaluation_artefacts/test.json
       hash: md5
-      md5: a0b4064a23221f668a20351105d86793
+      md5: c42b8c77d7ce88b8fd3733a58bfebea2
       size: 32
   feature:
     cmd: python src/stages/featurize.py
@@ -48,17 +52,17 @@ stages:
       size: 12853677
     - path: src/stages/featurize.py
       hash: md5
-      md5: 90011bee2a9c8efc65429f028bf8a4a8
-      size: 1461
+      md5: 71a255818fd8d4ff6abe39b2bf6fcb49
+      size: 1456
     params:
       params.yaml:
         feature.test_size: 0.2
     outs:
     - path: src/data/splits/test.csv
       hash: md5
-      md5: afb0e7dad0d2b091b110329f01e9ebd4
-      size: 1583491
+      md5: 41f402f6b290aacbe9ef8188a289aac7
+      size: 1580773
     - path: src/data/splits/train.csv
       hash: md5
-      md5: d22f8a20ddfbfb772321c2aa6a7881c2
-      size: 6329818
+      md5: eec6cb9419dff536276f50f23802dba7
+      size: 6332536

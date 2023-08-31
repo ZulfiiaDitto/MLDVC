@@ -14,7 +14,7 @@ feature:
 train:
   # training parameters, hyperparameters
   dataset_csv : 'src/data/splits/train.csv'
-  n_neighbors: 3
+  n_neighbors: 2
   random_seed: 42
 
 test: 

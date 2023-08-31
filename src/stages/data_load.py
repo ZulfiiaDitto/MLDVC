@@ -1,7 +1,7 @@
 import pandas as pd
 import yaml
 
-# you need to be in scr directory
+
 # this script not need to be run -> since all data had been loaded already
 
 with open("params.yaml", "r") as config:

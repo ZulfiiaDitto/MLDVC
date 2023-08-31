@@ -1,4 +1,16 @@
 stages:
+  feature:
+    cmd: python src/stages/featurize.py
+    deps: 
+    - 'src/data/data_shelter.csv'
+    - src/stages/featurize.py
+    params:
+    - feature.test_size
+    outs:
+    - 'src/data/splits/test.csv'
+    - 'src/data/splits/train.csv'
+
+
   train:
     cmd: python src/stages/train.py
     deps:

@@ -5,12 +5,12 @@ stages:
     deps:
     - path: src/data/splits/train.csv
       hash: md5
-      md5: 2dc6e17527bd4e8d89b194709874b19c
-      size: 6328920
+      md5: d22f8a20ddfbfb772321c2aa6a7881c2
+      size: 6329818
     - path: src/stages/train.py
       hash: md5
-      md5: e884b5d8e9233a6cff22dcde78007e5d
-      size: 1032
+      md5: defe444ff86ef50f86a57a55898029a2
+      size: 930
     params:
       params.yaml:
         train.n_neighbors: 3
@@ -18,15 +18,15 @@ stages:
     outs:
     - path: src/model/train.pkl
       hash: md5
-      md5: 48e11c6e6f9a7f91910ddbf0d05718dc
-      size: 18857973
+      md5: 83eb21fb6b03c266db6cf08983eba65c
+      size: 18847989
   evaluate:
     cmd: python src/stages/evaluate.py
     deps:
     - path: src/data/splits/test.csv
       hash: md5
-      md5: 1d20bac5bb20ff2a7081f7d772406771
-      size: 1584389
+      md5: afb0e7dad0d2b091b110329f01e9ebd4
+      size: 1583491
     - path: src/stages/evaluate.py
       hash: md5
       md5: 9fe0089176e057b0866c7edea1c23aa2
@@ -37,5 +37,28 @@ stages:
     outs:
     - path: src/evaluation_artefacts/test.json
       hash: md5
-      md5: cdfaab5c1357d2988174848247cba1f4
+      md5: a0b4064a23221f668a20351105d86793
       size: 32
+  feature:
+    cmd: python src/stages/featurize.py
+    deps:
+    - path: src/data/data_shelter.csv
+      hash: md5
+      md5: db4de1310aed36a44e50feb38dfcc705
+      size: 12853677
+    - path: src/stages/featurize.py
+      hash: md5
+      md5: 90011bee2a9c8efc65429f028bf8a4a8
+      size: 1461
+    params:
+      params.yaml:
+        feature.test_size: 0.2
+    outs:
+    - path: src/data/splits/test.csv
+      hash: md5
+      md5: afb0e7dad0d2b091b110329f01e9ebd4
+      size: 1583491
+    - path: src/data/splits/train.csv
+      hash: md5
+      md5: d22f8a20ddfbfb772321c2aa6a7881c2
+      size: 6329818

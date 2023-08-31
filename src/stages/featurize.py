@@ -1,16 +1,14 @@
 import pandas as pd
 import yaml
 from sklearn.model_selection import train_test_split
-from data_load import data_load 
-
+from sklearn import preprocessing 
 
 def featurize():
-    test_size = yaml.safe_load(open("params.yaml"))["data_split"]['test_size']
-
-    final = data_load()
-
+    filename= yaml.safe_load(open("params.yaml"))["feature"]['dataset_csv']
+    test_size = yaml.safe_load(open("params.yaml"))["feature"]['test_size']
+    final = pd.read_csv(filename)
     #import label encoder
-    from sklearn import preprocessing 
+    
     label_encoder = preprocessing.LabelEncoder()
     final['Sex upon Intake'] = label_encoder.fit_transform(final['Sex upon Intake'])
     final['Sex upon Outcome'] = label_encoder.fit_transform(final['Sex upon Outcome'])
@@ -31,8 +29,8 @@ def featurize():
 
     train, test = train_test_split(final, test_size=test_size, shuffle=True)
 
-    test.to_csv('data/splits/test.csv')
-    train.to_csv('data/splits/train.csv')
+    test.to_csv('src/data/splits/test.csv')
+    train.to_csv('src/data/splits/train.csv')
 
 if __name__ =='__main__':
     featurize()

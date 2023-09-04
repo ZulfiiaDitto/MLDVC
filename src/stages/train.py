@@ -1,10 +1,7 @@
-from sklearn import preprocessing 
-from sklearn.neighbors import KNeighborsClassifier
 from imblearn.over_sampling import SMOTE
 import pandas as pd
 import yaml
 import pickle 
-import argparse
 from sklearn.ensemble import GradientBoostingClassifier
 # you need to be in dvc ml project directory
 
@@ -25,8 +22,8 @@ def train():
 
     # using clasifier
    # knn = KNeighborsClassifier(n_neighbors=params['n_neighbors'])
-    knn = GradientBoostingClassifier(n_estimators=100, learning_rate=1.0,
-                                     max_depth=1, random_state=params['random_seed'])
+    knn = GradientBoostingClassifier(n_estimators=params['n_estimators'], learning_rate=params['lr'],
+                                     max_depth=params['max_depth'], random_state=params['random_seed'])
     knn.fit(X_train, y_train)
 
     with open('src/model/train.pkl', "wb") as fd:

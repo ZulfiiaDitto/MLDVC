@@ -4,6 +4,10 @@ import yaml
 import pickle 
 import json
 from sklearn.neighbors import KNeighborsClassifier
+#TODO: 
+# 1. figurate out how to do graphs 
+# 2. figurate out how to run with the parameters chnaged as we go 
+# 3. how to connect to DVC studio
 
 
 def evaluate():

@@ -1,11 +1,11 @@
-from sklearn.metrics import confusion_matrix, classification_report, accuracy_score, f1_score
+from sklearn.metrics import confusion_matrix, classification_report, accuracy_score, f1_score, ConfusionMatrixDisplay
 import pandas as pd
 import yaml
 import pickle 
 import json
 from sklearn.neighbors import KNeighborsClassifier
-
-from dvclive import Live
+import matplotlib.pyplot as plt
+import matplotlib as mpl
 #TODO: 
 # 1. figurate out how to do graphs 
 # 2. figurate out how to run with the parameters chnaged as we go 
@@ -29,6 +29,12 @@ def evaluate():
         loaded_model = pickle.load(models_params)
 
     test_predictions = loaded_model.predict(X_test)
+    conf_matrix = confusion_matrix(y_test, test_predictions)
+    disp = ConfusionMatrixDisplay(confusion_matrix=conf_matrix)
+    disp.plot(cmap=plt.cm.viridis)
+    plt.tight_layout()
+    plt.savefig("src/evaluation_artefacts/conf.png", pad_inches=5)
+
 
     with open('src/evaluation_artefacts/test.json', 'w') as fd:
         json.dump({'accuracy' : accuracy_score(y_test, test_predictions)}, fd)

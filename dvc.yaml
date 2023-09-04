@@ -37,3 +37,6 @@ stages:
     metrics:
     - src/evaluation_artefacts/test.json:
        cache: false
+    plots:
+    - src/evaluation_artefacts/conf.png:
+       cache: false

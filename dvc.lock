@@ -13,15 +13,15 @@ stages:
       size: 1091
     params:
       params.yaml:
-        train.lr: 1
-        train.max_depth: 4
+        train.lr: 0.1
+        train.max_depth: 3
         train.n_estimators: 100
         train.random_seed: 42
     outs:
     - path: src/model/train.pkl
       hash: md5
-      md5: 32a9815f49d636bd436066a0cdeb9d72
-      size: 217553
+      md5: dd48e1997ed49593af12b7d04eac3b0e
+      size: 123974
   evaluate:
     cmd: python src/stages/evaluate.py
     deps:
@@ -31,20 +31,24 @@ stages:
       size: 1580773
     - path: src/model/train.pkl
       hash: md5
-      md5: 32a9815f49d636bd436066a0cdeb9d72
-      size: 217553
+      md5: dd48e1997ed49593af12b7d04eac3b0e
+      size: 123974
     - path: src/stages/evaluate.py
       hash: md5
-      md5: f8c3b0ab3c589a3ecbaf9ad141d3ed9c
-      size: 1313
+      md5: fd4eb570e9101d92b3f2c4586d303125
+      size: 1897
     params:
       params.yaml:
         test.random_seed: 42
     outs:
+    - path: src/evaluation_artefacts/conf.png
+      hash: md5
+      md5: c0920d1d7f2342880d81fcf88b42bbcd
+      size: 20327
     - path: src/evaluation_artefacts/test.json
       hash: md5
-      md5: a16ca9386ca820568dc4b2439be43c56
-      size: 32
+      md5: d2404120a3b3256b947dc13dd70ccb97
+      size: 31
   feature:
     cmd: python src/stages/featurize.py
     deps:

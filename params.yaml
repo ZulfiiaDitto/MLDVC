@@ -14,9 +14,9 @@ feature:
 train:
   # training parameters, hyperparameters
   dataset_csv : 'src/data/splits/train.csv'
-  max_depth: 4
+  max_depth: 3
   random_seed: 42
-  lr: 1
+  lr: 0.1
   n_estimators: 100
 
 test: 

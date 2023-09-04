@@ -4,6 +4,7 @@ import yaml
 import pickle 
 import json
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 #TODO: 
 # 1. figurate out how to do graphs 
 # 2. figurate out how to run with the parameters chnaged as we go 
@@ -27,10 +28,12 @@ def evaluate():
         loaded_model = pickle.load(models_params)
 
     test_predictions = loaded_model.predict(X_test)
+    # cm = confusion_matrix(y_test, test_predictions, normalize='all')
+    # cmd = ConfusionMatrixDisplay(cm, display_labels=['adapt','no'])
+    # cmd.plot()
+
     with open('src/evaluation_artefacts/test.json', 'w') as fd:
         json.dump({'accuracy' : accuracy_score(y_test, test_predictions)}, fd)
-        
-
 
     print('Model performance on the test set:')
     print(confusion_matrix(y_test, test_predictions))

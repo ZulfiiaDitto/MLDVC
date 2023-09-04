@@ -33,8 +33,8 @@ stages:
       size: 46865
     - path: src/stages/evaluate.py
       hash: md5
-      md5: 9fe0089176e057b0866c7edea1c23aa2
-      size: 1151
+      md5: 5615478cb499005b6ce2465dbccac18e
+      size: 1514
     params:
       params.yaml:
         test.random_seed: 42

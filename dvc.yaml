@@ -30,5 +30,8 @@ stages:
     - src/model/train.pkl
     params:
     - test.random_seed 
-    outs:
-    - src/evaluation_artefacts/test.json
+    # outs:
+    # - src/evaluation_artefacts/test.json
+    metrics:
+    - src/evaluation_artefacts/test.json:
+       cache: false

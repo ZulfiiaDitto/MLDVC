@@ -18,7 +18,9 @@ stages:
     - 'src/data/splits/train.csv'
     params:
     - train.random_seed
-    - train.n_neighbors
+    - train.lr
+    - train.max_depth
+    - train.n_estimators
     outs:
     - src/model/train.pkl
 

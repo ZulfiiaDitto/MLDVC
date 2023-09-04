@@ -29,17 +29,10 @@ def evaluate():
         loaded_model = pickle.load(models_params)
 
     test_predictions = loaded_model.predict(X_test)
-    cm = confusion_matrix(y_test, test_predictions, normalize='all')
-    # cmd = ConfusionMatrixDisplay(cm, display_labels=['adapt','no'])
-    # cmd.plot()
 
     with open('src/evaluation_artefacts/test.json', 'w') as fd:
         json.dump({'accuracy' : accuracy_score(y_test, test_predictions)}, fd)
 
-
-    Live.log_plot("src/evaluation_artefacts/confusion matrix", cm, x="predicted", y="True",
-    template="bar_horizontal", title="confusion matrix")
-    
     print('Model performance on the test set:')
     print(confusion_matrix(y_test, test_predictions))
     print(classification_report(y_test, test_predictions))

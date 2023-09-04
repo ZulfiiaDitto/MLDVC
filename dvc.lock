@@ -9,17 +9,19 @@ stages:
       size: 6332536
     - path: src/stages/train.py
       hash: md5
-      md5: 7cfee3283fd9c1da4b8a67e85c00d5a9
-      size: 1147
+      md5: c8b824fb45ba5b2a9c9b6e9984b6eb9e
+      size: 1091
     params:
       params.yaml:
-        train.n_neighbors: 2
+        train.lr: 1
+        train.max_depth: 3
+        train.n_estimators: 100
         train.random_seed: 42
     outs:
     - path: src/model/train.pkl
       hash: md5
-      md5: c52dda1ebaa5e1fc681fd11743106599
-      size: 46865
+      md5: 744baeb50fee07af06645355354e8817
+      size: 123199
   evaluate:
     cmd: python src/stages/evaluate.py
     deps:
@@ -29,19 +31,19 @@ stages:
       size: 1580773
     - path: src/model/train.pkl
       hash: md5
-      md5: c52dda1ebaa5e1fc681fd11743106599
-      size: 46865
+      md5: 744baeb50fee07af06645355354e8817
+      size: 123199
     - path: src/stages/evaluate.py
       hash: md5
-      md5: 5615478cb499005b6ce2465dbccac18e
-      size: 1514
+      md5: 61ce485f73f9fe70bccf5dcd363e4e50
+      size: 1626
     params:
       params.yaml:
         test.random_seed: 42
     outs:
     - path: src/evaluation_artefacts/test.json
       hash: md5
-      md5: c42b8c77d7ce88b8fd3733a58bfebea2
+      md5: de3e1317ca45cee688b23d611e2768ec
       size: 32
   feature:
     cmd: python src/stages/featurize.py
